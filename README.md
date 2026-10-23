@@ -121,19 +121,32 @@ Open your browser at: [http://localhost:5173](http://localhost:5173)
 
 ## 🧪 Testing & Validation
 
-The test suite validates all endpoints:
+The test suite validates both functional capabilities and robustness edge-cases:
 ```bash
 PYTHONPATH=backend ./backend/venv/bin/pytest backend/tests/test_api.py
 ```
-- ✅ Health endpoint & service discovery
-- ✅ Safety vision hazard detection & bounding boxes
-- ✅ Forensic concrete crack estimation & ACI remediation
-- ✅ Real estate valuation calculation & cost breakdowns
-- ✅ Project planning WBS & critical path calculation
-- ✅ Weather advisory & crane wind restrictions
-- ✅ Regulatory knowledge retrieval
+- ✅ **Health & Discovery**: Service health check and active module discovery
+- ✅ **Safety Vision AI**: Multi-worker PPE detection, bounding box mapping, and stoppage triggers
+- ✅ **Forensic Crack Detection**: Dimensional metric bounds, 45° shear detection, ACI remediation protocols
+- ✅ **Real Estate Valuation**: DCF model, completion stage sensitivity, submarket benchmarks
+- ✅ **Project Planning**: Master WBS, critical path schedule, resource levelling
+- ✅ **Weather Safety Engine**: Extreme heat index, wind velocity thresholds, and crane stops
+- ✅ **Knowledge Base**: Statutory building codes (OSHA, ACI, IBC) citations and checklists
+- ✅ **Edge Cases & Incomplete Inputs**:
+  - Empty / 0-byte image file uploads
+  - Corrupted and truncated image stream bytes
+  - Extreme out-of-bounds weather telemetry (52°C, 90 km/h wind)
+  - Boundary property area (100 sq.ft.) and zero completion stage
 
 ---
+
+## ⚠️ Known Limitations & Operational Considerations
+
+1. **2D Optical Photogrammetry vs 3D LiDAR**: Optical photogrammetry for concrete crack detection operates on 2D resolution. For sub-millimeter subsurface delaminations, non-destructive ultrasonic pulse velocity (UPV) or impact-echo testing is recommended as a secondary field verification.
+2. **Edge Network Bandwidth**: In remote construction sites with constrained cellular uplinks, high-definition 4K camera streams should utilize client-side frame decimation (1 frame per 3 seconds) before transmitting to the multimodal API.
+3. **Regulatory Jurisdiction Differences**: Default statutory building codes leverage **IBC 2024**, **ACI 318-19**, and **OSHA 1926**. Local municipal amendments (e.g. NYC Building Code, Eurocodes) may specify tighter deflection or perimeter guardrail height tolerances.
+4. **Offline Resilience**: When `GEMINI_API_KEY` is not present or when cloud endpoints face intermittent rate limiting, the platform automatically engages its built-in analytical inference engine ensuring 100% UI stability without breaking client contracts.
+
 
 ## 📂 Repository Structure
 
